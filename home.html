@@ -13,9 +13,6 @@
         <div class="nav-left">
             <span></span>
         </div>
-        <div class="nav-right">
-            <button class="nav-item btn" id="logoutButton">Log Out</button>
-        </div>
     </nav>
 
     <div class="container">
@@ -23,6 +20,8 @@
             <input type="text" id="folderName" placeholder="Enter folder name" class="folder-input">
             <button class="action-btn">Create Folder</button>
             <button class="action-btn" onclick="window.location.href='home.html'">Back</button>
+            <!-- Move Logout Button Here -->
+            <button class="action-btn" id="logoutButton" onclick="logout()">Log Out</button>
         </div>
         <input type="hidden" id="currentParentId" value="0">
         <div class="folders-background">
@@ -40,6 +39,17 @@
     <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>
     <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js"></script>
     <script type="module" src="home.js"></script>
+    <script>
+        // Logout function
+        function logout() {
+            // Your Firebase logout logic here
+            firebase.auth().signOut().then(() => {
+                window.location.href = "login.html"; // Redirect to login page after logout
+            }).catch((error) => {
+                console.error("Error logging out: ", error);
+            });
+        }
+    </script>
 </body>
 
 </html>
