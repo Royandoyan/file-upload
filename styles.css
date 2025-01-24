@@ -1,0 +1,349 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #323a56;
+}
+
+/* Font Import */
+@font-face {
+    font-family: LEMONMILK-Bold;
+    src: url(../Fonts/LEMONMILK-Bold.otf);
+}
+@font-face {
+    font-family: LEMONMILK-Light;
+    src: url(../Fonts/LEMONMILK-Light.otf);
+}
+
+/* Layout */
+.left {
+    margin-right: auto;
+}
+.right {
+    margin-left: auto;
+}
+
+/* Form Styling */
+input {
+    padding: 12px;
+    margin-bottom: 12px;
+    width: 420px;
+    border-radius: 6px;
+    font-family: Arial;
+    background-color: #f4f6f8; /* Lighter background for inputs */
+    border: 1px solid #ccc; /* Lighter border */
+    transition: all 0.3s ease;
+}
+input:focus {
+    border-color: #1a73e8;
+    background-color: #ffffff;
+}
+button {
+    background-color: #34495e; /* Darker shade */
+    color: white;
+    font-family: LEMONMILK-Light;
+    font-size: 14px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 45px;
+    width: 130px;
+    margin-top: 18px;
+    transition: background-color 0.4s ease, transform 0.2s ease;
+}
+button:hover {
+    background-color: #1a73e8; /* Light blue shade on hover */
+    transform: scale(1.05); /* Slight scaling effect */
+}
+
+/* Navigation */
+nav {
+    background-color: #ecf0f1; /* Soft gray background */
+    color: #2c3e50;
+    padding: 18px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.nav-left {
+    display: flex;
+    align-items: center;
+    font-family: LEMONMILK-Bold;
+    font-size: 40px;
+}
+.nav-right {
+    display: flex;
+    align-items: center;
+    font-family: LEMONMILK-Light;
+    font-size: 15px;
+}
+.nav-item {
+    margin: 0 12px;
+    text-decoration: none;
+    color: #2c3e50;
+    transition: color 0.3s ease;
+}
+.nav-item:hover {
+    color: #1a73e8; /* Blue color on hover */
+}
+.nav-item.current {
+    font-family: LEMONMILK-Bold;
+    border-bottom: 2px solid #1a73e8;
+}
+.nav-item.btn {
+    width: 110px;
+    color: white;
+    background-color: #34495e;
+    padding: 8px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Containers */
+.container {
+    width: 100%;
+    background-color: #323a56; /* Lighter container background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    height: 600px;
+    justify-content: center;
+    border-radius: 12px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container #folders {
+    align-self: flex-start;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 14px;
+}
+.folders-background {
+    background-color: #1c1f26;
+    border-radius: 12px;
+    width: 85%;
+    height: 75%;
+    overflow-y: auto;
+    padding: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow */
+}
+
+/* Typography */
+.title {
+    font-family: LEMONMILK-Bold;
+    font-size: 45px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+.loginh2, h2 {
+    font-family: LEMONMILK-Light;
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+.loginh2 {
+    margin-top: 70px;
+}
+.description, p {
+    font-family: LEMONMILK-Light;
+    font-size: 12px;
+    color: #2c3e50;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+/* Password Wrapper */
+.password-wrapper {
+    position: relative;
+    width: 420px;
+    display: flex;
+    align-items: center;
+}
+.password-wrapper input, .password-wrapper .form-control {
+    padding-right: 45px;
+}
+.eye-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 1px;
+    bottom: 10px;
+    width: 55px;
+}
+.eye-btn i {
+    color: #2c3e50;
+    font-size: 20px;
+}
+
+/* Loading Indicator */
+#loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 6px;
+    z-index: 1000;
+    display: none;
+}
+
+/* Folder and File Items */
+.folder-icon, .file-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    margin-left: 12px;
+}
+.folder-item, .file-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    position: relative;
+    justify-content: space-between;
+    max-height: 55px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+.folder-item:hover, .file-item:hover  {
+    background-color: #f0f1f4; /* Light hover background */
+    ;
+}
+.folder-item::after, .file-item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    border-bottom: 1px solid #ddd; /* Lighter border */
+}
+.folder-text, .file-link {
+    flex-grow: 1;
+}
+.delete-btn {
+    background-color: #e74c3c; /* Red button */
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 65px;
+    height: 32px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+.delete-btn:hover {
+    background-color: #c0392b; /* Darker red */
+}
+
+/* Floating Button */
+.floating-file-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 35px;
+    z-index: 1000;
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.3);
+}
+.floating-file-btn input[type="file"] {
+    display: none;
+}
+.floating-file-btn label {
+    display: inline-block;
+    background-color: #e67e22; /* Vibrant orange */
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: LEMONMILK-Light;
+    font-size: 14px;
+}
+.floating-file-btn label:hover {
+    background-color: #d35400; /* Darker orange on hover */
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+    button {
+        height: 32px;
+        width: 110px;
+    }
+    span {
+        font-size: 10px;
+    }
+    .nav-item {
+        margin: 0 4px;
+        font-size: 9px;
+    }
+    .nav-item.btn {
+        font-size: 11px;
+        width: 70px;
+    }
+    .nav-right button {
+        width: 70px;
+        font-size: 6px;
+        height: 32px;
+    }
+    input, .password-wrapper, .password-wrapper input, .password-wrapper .form-control {
+        width: 270px !important;
+    }
+    .eye-btn {
+        bottom: 16px !important;
+    }
+    .title {
+        font-size: 32px;
+    }
+    .description {
+        font-size: 8px;
+    }
+    #search-input {
+        width: 190px !important;
+    }
+    #search-button, #my-location {
+        width: 55px;
+        font-size: 8px;
+    }
+    #notificationList {
+        width: 310px !important;
+    }
+    #notificationList li {
+        font-size: 11px;
+    }
+    .red-dot {
+        top: 28px;
+        right: 90px !important;
+        height: 7px !important;
+        width: 7px !important;
+    }
+    .notification-popup {
+        width: 170px !important;
+        height: 42px !important;
+        font-size: 13px !important;
+    }
+    #popupText {
+        font-size: 9px !important;
+    }
+    .folders-background {
+        width: 92%;
+    }
+    .right {
+        width: 75px;
+        font-size: 9px !important;
+    }
+    #folderName {
+        width: 160px !important;
+    }
+    .container {
+        max-height: 520px;
+    }
+}
